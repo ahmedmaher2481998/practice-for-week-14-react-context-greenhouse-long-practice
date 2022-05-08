@@ -7,8 +7,14 @@ function Hygrometer() {
 	const [hydo1, setHydo1] = useState(50);
 	useEffect(() => {
 		setTimeout(() => {
-			setHydo1(hydo);
-			console.log(hydo, "o", hydo1, "new");
+			setHydo1((pre) => {
+				if (pre === hydo) {
+					return pre;
+				} else {
+					return pre > hydo ? pre - 2 : pre + 2;
+				}
+			});
+			// console.log(hydo, "o", hydo1, "new");
 		}, "1000");
 	}, [hydo]);
 	return (
